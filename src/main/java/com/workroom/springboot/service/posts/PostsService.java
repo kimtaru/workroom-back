@@ -2,8 +2,8 @@ package com.workroom.springboot.service.posts;
 
 import com.workroom.springboot.domain.posts.Posts;
 import com.workroom.springboot.domain.posts.PostsRepository;
-import com.workroom.springboot.web.dto.PostsResponseDto;
-import com.workroom.springboot.web.dto.PostsSaveRequestDto;
+import com.workroom.springboot.web.dto.posts.PostsResponseDto;
+import com.workroom.springboot.web.dto.posts.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

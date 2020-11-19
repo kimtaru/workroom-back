@@ -1,9 +1,10 @@
-package com.workroom.springboot.web;
+package com.workroom.springboot.web.controller;
 
 import com.workroom.springboot.domain.posts.Posts;
 import com.workroom.springboot.domain.posts.PostsRepository;
-import com.workroom.springboot.web.dto.PostsSaveRequestDto;
-import com.workroom.springboot.web.dto.PostsUpdateRequestDto;
+
+import com.workroom.springboot.web.dto.posts.PostsSaveRequestDto;
+import com.workroom.springboot.web.dto.posts.PostsUpdateRequestDto;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -78,6 +79,7 @@ public class PostsApiControllerTest {
 
         PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder()
                 .title(expectedTitle).content(expectedTitle).build();
+
 
         String url = "http://localhost:"+port+"/api/v1/posts/"+updateId;
         HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);

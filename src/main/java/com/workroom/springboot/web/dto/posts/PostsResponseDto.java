@@ -1,4 +1,4 @@
-package com.workroom.springboot.web.dto;
+package com.workroom.springboot.web.dto.posts;
 
 import com.workroom.springboot.domain.posts.Posts;
 import lombok.Getter;

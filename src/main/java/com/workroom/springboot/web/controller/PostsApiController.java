@@ -1,8 +1,8 @@
-package com.workroom.springboot.web;
+package com.workroom.springboot.web.controller;
 
 import com.workroom.springboot.service.posts.PostsService;
-import com.workroom.springboot.web.dto.PostsResponseDto;
-import com.workroom.springboot.web.dto.PostsSaveRequestDto;
+import com.workroom.springboot.web.dto.posts.PostsResponseDto;
+import com.workroom.springboot.web.dto.posts.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
