@@ -61,7 +61,7 @@ compileQuerydsl {
     options.annotationProcessorPath = configurations.querydsl
 }
 
-configurations { // 손권남님이 공유해주신 팁
+configurations { 
     // 아래를 지정하지 않으면, compile 로 걸린 JPA 의존성에 접근하지 못한다.
     querydsl.extendsFrom compileClasspath
 }
