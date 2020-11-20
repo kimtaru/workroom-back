@@ -1,13 +1,16 @@
 buildscript {
     ext {
         springBootVersion = '2.1.9.RELEASE'
+        querydslPluginVersion = '1.0.10'
     }
     repositories {
         mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/"}
         jcenter()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:${querydslPluginVersion}")
     }
 }
 
@@ -30,7 +33,37 @@ dependencies {
     compile('org.projectlombok:lombok')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('com.h2database:h2')
+    compile("com.querydsl:querydsl-apt") //querydsl
+    compile("com.querydsl:querydsl-jpa") //querydsl
     testCompile('org.springframework.boot:spring-boot-starter-test')
     //testImplementation('org.assertj:assertj-core:3.18.1')
     //testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+
+apply plugin: "com.ewerk.gradle.plugins.querydsl"
+
+def queryDslDir = "src/main/generated"
+querydsl {
+    library = "com.querydsl:querydsl-apt:4.2.2" // 사용할 AnnotationProcesoor 정의
+    jpa = true
+    querydslSourcesDir = queryDslDir
+}
+sourceSets {
+    main {
+        java {
+            srcDir queryDslDir
+        }
+    }
+}
+
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
+}
+
+configurations { // 손권남님이 공유해주신 팁
+    // 아래를 지정하지 않으면, compile 로 걸린 JPA 의존성에 접근하지 못한다.
+    querydsl.extendsFrom compileClasspath
+}
+
+

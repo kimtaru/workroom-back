@@ -20,13 +20,13 @@ public class PostsService {
 
     @Transactional
     public Long update(Long id, PostsSaveRequestDto requestDto) {
-        Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다 id"+id));
+        Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("There is No User who you are finding. id"+id));
         posts.update(requestDto.getTitle(), requestDto.getTitle());
         return id;
     }
 
     public PostsResponseDto findById(Long id) {
-        Posts entity = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id="+id));
+        Posts entity = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("There is No User who you are finding. id="+id));
         return new PostsResponseDto(entity);
     }
 }
