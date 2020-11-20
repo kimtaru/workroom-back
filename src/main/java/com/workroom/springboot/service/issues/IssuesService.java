@@ -31,4 +31,11 @@ public class IssuesService {
                 .map(IssuesResponseDto::new)
                 .collect(Collectors.toList());
     }
+
+    @Transactional
+    public List<IssuesResponseDto> findAllIssues() {
+        return issuesRepository.findAll().stream()
+                .map(IssuesResponseDto::new)
+                .collect(Collectors.toList());
+    }
 }

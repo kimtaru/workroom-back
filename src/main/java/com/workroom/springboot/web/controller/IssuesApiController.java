@@ -25,6 +25,11 @@ public class IssuesApiController {
         return issuesService.findById(id);
     }
 
+    @GetMapping("/api/issues")
+    public List<IssuesResponseDto> findAllIssues() {
+        return issuesService.findAllIssues();
+    }
+
     @GetMapping("/api/v2/issues/{thrower}")
     public List<IssuesResponseDto> findByThrower(@PathVariable String thrower) {
         return issuesService.findByThrower(thrower);

@@ -36,7 +36,7 @@ public class IssuesApiControllerTest {
         String attendent = "a,b,c";
         issuesRepository.save(new Issues(agenda,thrower,attendent));
 
-        Issues result = issuesRepositorySupport.findByThrower(thrower);
-        assertThat(result.getThrower()).isEqualTo(thrower);
+        List<Issues> result = issuesRepositorySupport.findByThrower(thrower);
+        assertThat(result.get(0).getThrower()).isEqualTo(thrower);
     }
 }
