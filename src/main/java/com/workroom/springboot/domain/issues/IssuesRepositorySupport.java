@@ -1,15 +1,13 @@
 package com.workroom.springboot.domain.issues;
 
-import com.querydsl.core.BooleanBuilder;
-import com.querydsl.jpa.impl.JPAQuery;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.workroom.springboot.domain.user.QUser;
+import com.workroom.springboot.web.dto.issues.IssuesResponseDto;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
-
-import static com.workroom.springboot.domain.issues.QIssues.issues;
 
 @Repository
 public class IssuesRepositorySupport extends QuerydslRepositorySupport {
@@ -20,10 +18,20 @@ public class IssuesRepositorySupport extends QuerydslRepositorySupport {
         this.queryFactory = queryFactory;
     }
 
-    public List<Issues> findByThrower(String thrower) {
+
+
+    public List<IssuesResponseDto> findAllIssues() {
+        QIssues issues = new QIssues("issues");
+        QUser user = new QUser("user");
+
         return queryFactory
-                .selectFrom(issues)
-                .where(issues.thrower.eq(thrower))
+                .select(Projections.bean(IssuesResponseDto.class
+                        , issues.id
+                        , issues.agenda
+                        , user.userName))
+                .from(issues, user)
+                .where(issues.thrower.eq(user.userNumber))
                 .fetch();
+
     }
 }

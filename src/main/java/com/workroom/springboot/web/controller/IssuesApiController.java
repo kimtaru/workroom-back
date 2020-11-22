@@ -16,22 +16,8 @@ import java.util.List;
 public class IssuesApiController {
     private final IssuesService issuesService;
 
-
-    @GetMapping("/api/v1/issues/{id}")
-    public IssuesResponseDto findByThrower(@PathVariable Long id) {
-        System.out.println(">>>>>>>>>>>>test;");
-        System.out.println(">>>>>>>>>>>>thrower: "+id);
-
-        return issuesService.findById(id);
-    }
-
-    @GetMapping("/api/issues")
+    @GetMapping("/api/v1/issues")
     public List<IssuesResponseDto> findAllIssues() {
         return issuesService.findAllIssues();
-    }
-
-    @GetMapping("/api/v2/issues/{thrower}")
-    public List<IssuesResponseDto> findByThrower(@PathVariable String thrower) {
-        return issuesService.findByThrower(thrower);
     }
 }

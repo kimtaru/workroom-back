@@ -18,24 +18,7 @@ public class IssuesService {
     private final IssuesRepositorySupport issuesRepositorySupport;
 
     @Transactional
-    public IssuesResponseDto findById(Long id) {
-        System.out.println(">>>>>>>>>>>>>>>service");
-
-        Issues entity = issuesRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("aaa"));
-        return new IssuesResponseDto(entity);
-    }
-
-    @Transactional(readOnly = true)
-    public List<IssuesResponseDto> findByThrower(String thrower) {
-        return issuesRepositorySupport.findByThrower(thrower).stream()
-                .map(IssuesResponseDto::new)
-                .collect(Collectors.toList());
-    }
-
-    @Transactional
     public List<IssuesResponseDto> findAllIssues() {
-        return issuesRepository.findAll().stream()
-                .map(IssuesResponseDto::new)
-                .collect(Collectors.toList());
+        return issuesRepositorySupport.findAllIssues();
     }
 }

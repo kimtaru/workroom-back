@@ -2,22 +2,15 @@ package com.workroom.springboot.web.dto.issues;
 
 import com.workroom.springboot.domain.issues.Issues;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 public class IssuesResponseDto {
     private Long id;
-    private String thrower;
     private String agenda;
-    private String attendent;
-    private LocalDateTime createdDt;
+    private String userName;
 
-    public IssuesResponseDto(Issues entity) {
-        this.id = entity.getId();
-        this.thrower = entity.getThrower();
-        this.agenda = entity.getAgenda();
-        this.attendent = entity.getAttendent();
-        this.createdDt = entity.getCreatedDate();
-    }
 }
