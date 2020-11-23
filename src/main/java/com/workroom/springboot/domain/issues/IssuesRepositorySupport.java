@@ -27,10 +27,15 @@ public class IssuesRepositorySupport extends QuerydslRepositorySupport {
         return queryFactory
                 .select(Projections.bean(IssuesResponseDto.class
                         , issues.id
+                        , user.userName
+                        , user.userDept
+                        , issues.thrower
                         , issues.agenda
-                        , user.userName))
+                        , issues.createdDate
+                        , issues.attendent))
                 .from(issues, user)
                 .where(issues.thrower.eq(user.userNumber))
+                .orderBy(issues.createdDate.desc())
                 .fetch();
 
     }

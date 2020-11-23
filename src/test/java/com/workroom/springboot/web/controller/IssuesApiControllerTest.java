@@ -3,6 +3,9 @@ package com.workroom.springboot.web.controller;
 import com.workroom.springboot.domain.issues.Issues;
 import com.workroom.springboot.domain.issues.IssuesRepository;
 import com.workroom.springboot.domain.issues.IssuesRepositorySupport;
+import com.workroom.springboot.domain.user.User;
+import com.workroom.springboot.domain.user.UserRepository;
+import com.workroom.springboot.web.dto.issues.IssuesResponseDto;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,21 +25,32 @@ public class IssuesApiControllerTest {
     private IssuesRepository issuesRepository;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private IssuesRepositorySupport issuesRepositorySupport;
 
     @After
     public void tearDown() throws Exception {
         issuesRepository.deleteAllInBatch();
+        userRepository.deleteAllInBatch();
     }
 
     @Test
     public void querydsl_function_check() {
-        String thrower = "sol";
+        String thrower = "111";
         String agenda = "coding";
         String attendent = "a,b,c";
         issuesRepository.save(new Issues(agenda,thrower,attendent));
 
-        List<Issues> result = issuesRepositorySupport.findByThrower(thrower);
-        assertThat(result.get(0).getThrower()).isEqualTo(thrower);
+        String userNumber = "111";
+        String userName = "sol";
+        String userDept = "dept";
+        String email = "email";
+        String password = "pwd";
+        userRepository.save(new User(userNumber,userName,userDept,email,password));
+
+        List<IssuesResponseDto> result = issuesRepositorySupport.findAllIssues();
+        System.out.println(">>>>>>>>>>>>>>>"+result.get(0).getUserName());
     }
 }

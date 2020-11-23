@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 public class IssuesResponseDto {
     private Long id;
     private String agenda;
-    private String userName;
-
+    private String thrower;
+    private String attendent;
+    private String userName; //join with 'User'
+    private String userDept; //join with 'User'
 }

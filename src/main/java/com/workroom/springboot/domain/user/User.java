@@ -1,6 +1,7 @@
 package com.workroom.springboot.domain.user;
 
 import com.workroom.springboot.domain.BaseTimeEntity;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -29,4 +30,12 @@ public class User extends BaseTimeEntity {
     @Column(length = 50, nullable = false)
     private String password;
 
+    @Builder
+    public User(String userNumber, String userName, String userDept, String email, String password) {
+        this.userNumber = userNumber;
+        this.userName = userName;
+        this.userDept = userDept;
+        this.email = email;
+        this.password = password;
+    }
 }
