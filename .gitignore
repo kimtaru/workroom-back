@@ -2,3 +2,6 @@
 .idea
 generated
 application-oauth.properties
+build/classes/java/querydsl/
+build/tmp/
+src/test/java/com/workroom/springboot/web/dto/
