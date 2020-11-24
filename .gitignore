@@ -1,4 +1,4 @@
 .gradle
 .idea
-
 generated
+application-oauth.properties
