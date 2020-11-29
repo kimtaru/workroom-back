@@ -1,4 +1,4 @@
-package com.workroom.springboot.web.controller;
+package com.workroom.springboot.web.controller.posts;
 
 import com.workroom.springboot.service.posts.PostsService;
 import com.workroom.springboot.web.dto.posts.PostsResponseDto;
