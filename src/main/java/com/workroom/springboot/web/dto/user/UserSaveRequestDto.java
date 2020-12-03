@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class UserSaveRequsetDto {
+public class UserSaveRequestDto {
     private String userAccount;
     private String password;
     private Long termOne;
@@ -18,7 +18,7 @@ public class UserSaveRequsetDto {
     }
 
     @Builder
-    public UserSaveRequsetDto(String userAccount, String password, Long termOne, Long termTwo) {
+    public UserSaveRequestDto(String userAccount, String password, Long termOne, Long termTwo) {
         this.userAccount = userAccount;
         this.password = password;
         this.termOne = termOne;
