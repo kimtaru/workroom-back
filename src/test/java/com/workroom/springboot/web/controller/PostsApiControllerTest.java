@@ -3,8 +3,10 @@ package com.workroom.springboot.web.controller;
 import com.workroom.springboot.domain.posts.Posts;
 import com.workroom.springboot.domain.posts.PostsRepository;
 
+import com.workroom.springboot.domain.users.UserRepositorySupport;
 import com.workroom.springboot.web.dto.posts.PostsSaveRequestDto;
 import com.workroom.springboot.web.dto.posts.PostsUpdateRequestDto;
+import com.workroom.springboot.web.dto.user.UserResponseDto;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +35,9 @@ public class PostsApiControllerTest {
 
     @Autowired
     private PostsRepository postsRepository;
+
+    @Autowired
+    private UserRepositorySupport userRepositorySupport;
 
     @After
     public void tearDown() throws Exception {

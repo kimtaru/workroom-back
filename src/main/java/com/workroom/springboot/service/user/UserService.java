@@ -1,9 +1,7 @@
 package com.workroom.springboot.service.user;
 
-import com.workroom.springboot.domain.user.User;
-import com.workroom.springboot.domain.user.UserRepository;
-import com.workroom.springboot.domain.user.UserRepositorySupport;
-import com.workroom.springboot.web.dto.user.UserResponseDto;
+import com.workroom.springboot.domain.users.UserRepository;
+import com.workroom.springboot.domain.users.UserRepositorySupport;
 import com.workroom.springboot.web.dto.user.UserSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -24,9 +22,15 @@ public class UserService {
         return userRepository.save(requestDto.toEntity()).getId();
     }
 
+    /* 회원 가입 시 계정 중복 체크 */
     @Transactional(readOnly = true)
     public Long findByUserAccount(String email) {
         Long check = userRepositorySupport.findByUserAccount(email);
         return check;
+        /*
+        * return: 0/1(미중복/중복)
+        * */
     }
+
+
 }

@@ -1,6 +1,6 @@
 package com.workroom.springboot.web.dto.user;
 
-import com.workroom.springboot.domain.user.User;
+import com.workroom.springboot.domain.users.Users;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,8 +25,8 @@ public class UserSaveRequestDto {
         this.termTwo = termTwo;
     }
 
-    public User toEntity() {
-        return User.builder()
+    public Users toEntity() {
+        return Users.builder()
                 .userAccount(userAccount)
                 .password(password)
                 .termOne(termOne)

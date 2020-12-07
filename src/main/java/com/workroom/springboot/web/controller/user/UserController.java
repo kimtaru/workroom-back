@@ -8,13 +8,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/api/user")
 public class UserController {
     private final UserService userService;
 
     /*
     * desc: 회원가입
     * */
-    @PostMapping("/api/user/join")
+    @PostMapping("/join")
     public Long save(@RequestBody UserSaveRequestDto requestDto) {
         return userService.save(requestDto);
     }
@@ -22,7 +23,7 @@ public class UserController {
     /*
     * desc: 계정 중복체크
     * */
-    @GetMapping("/api/user/join/{email}")
+    @GetMapping("/join/{email}")
     public Long findByUserAccount(@PathVariable String email) {
         return userService.findByUserAccount(email);
     }

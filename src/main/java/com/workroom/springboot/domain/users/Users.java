@@ -1,4 +1,4 @@
-package com.workroom.springboot.domain.user;
+package com.workroom.springboot.domain.users;
 
 import com.workroom.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
@@ -10,12 +10,12 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class User extends BaseTimeEntity {
+public class Users extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, unique = true)
     private String userAccount;
 
     @Column(length = 100, nullable = false)
@@ -29,7 +29,7 @@ public class User extends BaseTimeEntity {
 
 
     @Builder
-    public User(String userAccount, String password, Long termOne, Long termTwo) {
+    public Users(String userAccount, String password, Long termOne, Long termTwo) {
         this.userAccount = userAccount;
         this.password = password;
         this.termOne = termOne;
