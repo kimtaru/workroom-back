@@ -27,4 +27,14 @@ public class UserController {
     public Long findByUserAccount(@PathVariable String email) {
         return userService.findByUserAccount(email);
     }
+
+    /*
+    * desc: 비밀번호 변경하기
+    * */
+    @PutMapping("/resetPwd")
+    public Long updateByUserAccount(@RequestBody UserSaveRequestDto requestDto) {
+        String email = requestDto.getUserAccount();
+        String pwd = requestDto.getPassword();
+        return userService.updateByUserAccount(email, pwd);
+    }
 }

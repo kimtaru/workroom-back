@@ -32,5 +32,13 @@ public class UserService {
         * */
     }
 
+    @Transactional
+    public Long updateByUserAccount(String email, String pwd) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return userRepositorySupport.updateByUserAccount(email,passwordEncoder.encode(pwd));
+    }
+
+
+
 
 }

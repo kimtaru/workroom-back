@@ -32,6 +32,11 @@ public class UserRepositorySupport extends QuerydslRepositorySupport {
                 .fetchOne();
     }
 
+    public Long updateByUserAccount(String email, String pwd) {
+        return queryFactory.update(users).where(users.userAccount.eq(email))
+                .set(users.password, pwd).execute();
+    }
+
 
 
 
