@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserSaveRequestDto {
     private String userAccount;
+    private String name;
+    private String googleId;
     private String password;
     private Long termOne;
     private Long termTwo;
@@ -18,8 +20,10 @@ public class UserSaveRequestDto {
     }
 
     @Builder
-    public UserSaveRequestDto(String userAccount, String password, Long termOne, Long termTwo) {
+    public UserSaveRequestDto(String userAccount, String name, String googleId, String password, Long termOne, Long termTwo) {
         this.userAccount = userAccount;
+        this.name = name;
+        this.googleId = googleId;
         this.password = password;
         this.termOne = termOne;
         this.termTwo = termTwo;
@@ -29,6 +33,8 @@ public class UserSaveRequestDto {
         return Users.builder()
                 .userAccount(userAccount)
                 .password(password)
+                .name(name)
+                .googleId(googleId)
                 .termOne(termOne)
                 .termTwo(termTwo)
                 .build();

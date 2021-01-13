@@ -16,6 +16,12 @@ public class Users extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 20, nullable = false)
+    private String name;
+
+    @Column(length = 20, unique = true)
+    private String googleId;
+
     @Column(length = 100, nullable = false, unique = true)
     private String userAccount;
 
@@ -30,8 +36,10 @@ public class Users extends BaseTimeEntity {
 
 
     @Builder
-    public Users(String userAccount, String password, Long termOne, Long termTwo) {
+    public Users(String userAccount, String name, String googleId, String password, Long termOne, Long termTwo) {
         this.userAccount = userAccount;
+        this.name = name;
+        this.googleId = googleId;
         this.password = password;
         this.termOne = termOne;
         this.termTwo = termTwo;
